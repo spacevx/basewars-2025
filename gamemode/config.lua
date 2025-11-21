@@ -644,14 +644,6 @@ BaseWars.Config.CommandsHelp = {
 
 
   },
-
-  ["Place a Bounty"] = {
-    "Need someone gone, but too lazy and rich? We have just the thing for you.",
-    "",
-    "/bounty  (playername)        /place (playername)        /placebounty (playername)",
-
-
-  },
 }
 
 -- Spawnmenu Category Creation
