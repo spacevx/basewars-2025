@@ -35,10 +35,6 @@ if BaseWars.Config.AllTalk then
 	game.ConsoleCommand("sv_alltalk 3\n")
 end
 
-function GM:PostLoadData(ply)
-	BaseWars.UTIL.RefundFromCrash(ply)
-end
-
 function GM:PlayerInitialSpawn(ply)
 	self.BaseClass.PlayerInitialSpawn(self, ply)
 	BaseWars.MySQL.FullInitPlayer(ply)
@@ -335,38 +331,6 @@ function GM:PlayerShouldTakeDamage(ply, atk)
 	return true
 end
 
-function GM:PostPlayerDeath(ply)
-	--[[local Weapons = ply:GetWeapons()
-
-	for k, wep in next, Weapons do
-		if not BaseWars.Ents:Valid(wep) then return end
-
-		local Model = wep:GetModel()
-		local Class = wep:GetClass()
-
-		if BaseWars.Config.WeaponDropBlacklist[Class] then continue end
-
-		local SpawnPos = ply:GetPos() + BaseWars.Config.SpawnOffset
-		local SpawnAng = Angle(math.random(-180, 180), math.random(-180, 180), math.random(-180, 180))
-
-		local desp = BaseWars.Config.WeaponDespawn or 0
-		local Ent = ents.Create("bw_weapon")
-			Ent.WeaponClass = Class
-			if desp > 0 then
-				Ent.DespawnWhen = CurTime() + desp
-			end
-			Ent.Model = Model
-			Ent:SetPos(SpawnPos)
-			Ent:SetAngles(SpawnAng)
-		Ent:Spawn()
-		Ent:Activate()
-	end]]
-end
-
-function GM:PlayerDisconnected(ply)
-	BaseWars.UTIL.ClearRollbackFile(ply)
-end
-
 local maxs = Vector(4164, -4247, 431)
 local mins = Vector(585, -7418, -246)
 local _ang = Angle(0, 180, 0)
@@ -374,7 +338,6 @@ local _pos = Vector(508, -6305, -135)
 
 function GM:Think()
 	if LastThink < CurTime() - 5 then
-		BaseWars.UTIL.WriteCrashRollback()
 
 		for k, v in next, ents.GetAll() do
 			if v:IsOnFire() then
@@ -428,7 +391,6 @@ function GM:InitPostEntity()
 	end
 
 	BaseWars.MySQL.Connect()
-	BaseWars.UTIL.WriteCrashRollback(true)
 end
 
 function GM:PlayerSpawn(ply)

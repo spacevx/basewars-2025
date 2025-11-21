@@ -39,10 +39,7 @@ PLAYER.HasLevel = Curry(MODULE.HasLevel)
 if SERVER then
 
 	function MODULE:Init(ply)
-	
-		BaseWars.MySQL.InitPlayer(ply, "xp", "0")
-		BaseWars.MySQL.InitPlayer(ply, "level", "1")
-		
+		-- Nothing here
 	end
 	PLAYER.InitLevel = Curry(MODULE.Init)
 

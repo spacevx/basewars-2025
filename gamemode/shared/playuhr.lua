@@ -7,7 +7,7 @@ if SERVER then
 	PlayTime.LastThink = CurTime() + 1
 
 	function PlayTime:Init(ply) -- init
-		BaseWars.MySQL.InitPlayer(ply, "time", "0")
+		-- Nothing here
 	end
 
 	function PlayTime:LoadGlobalTimeFile(ply) -- load

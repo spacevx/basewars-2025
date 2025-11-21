@@ -20,9 +20,7 @@ PLAYER.GetMoney = Curry(MODULE.GetMoney)
 if SERVER then
 
 	function MODULE:InitMoney(ply)
-	
-		BaseWars.MySQL.InitPlayer(ply, "money", tostring(BaseWars.Config.StartMoney))
-		
+		-- Nothing here
 	end
 	PLAYER.InitMoney = Curry(MODULE.InitMoney)
 

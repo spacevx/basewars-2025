@@ -20,9 +20,7 @@ PLAYER.GetKarma = Curry(MODULE.Get)
 if SERVER then
 
 	function MODULE:Init(ply)
-	
-		BaseWars.MySQL.InitPlayer(ply, "karma", "0")
-		
+		-- Nothing here
 	end
 	PLAYER.InitKarma = Curry(MODULE.Init)
 
